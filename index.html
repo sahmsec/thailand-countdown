@@ -221,11 +221,12 @@
   .crew ul{
     display:flex; flex-wrap:wrap; justify-content:center;
     gap:8px clamp(8px,1.4vw,14px);
+    max-width:min(92vw,1020px);
     margin:0; padding:0; list-style:none;
   }
   .crew li{
-    display:flex; align-items:center; gap:.5em;
-    padding:.3em .9em .3em .3em;
+    display:flex; align-items:baseline; gap:.55em;
+    padding:.46em .95em .52em;
     border-radius:999px;
     border:1px solid rgba(240,199,132,.28);
     background:rgba(255,246,233,.1);
@@ -241,30 +242,6 @@
     color:var(--gold);
   }
   .crew .role{color:rgba(255,243,226,.8); font-style:italic}
-
-  /* face circles */
-  .ava{
-    position:relative;
-    flex:0 0 auto;
-    width:clamp(28px,6vw,34px); aspect-ratio:1;
-    border-radius:50%;
-    overflow:hidden;
-    background:linear-gradient(160deg, rgba(240,199,132,.34), rgba(240,199,132,.12));
-    box-shadow:0 0 0 1px rgba(240,199,132,.45), 0 3px 10px rgba(4,12,26,.45);
-  }
-  .ava img{
-    position:absolute; inset:0; z-index:1;
-    width:100%; height:100%;
-    object-fit:cover;
-  }
-  .mono{
-    position:absolute; inset:0;
-    display:grid; place-items:center;
-    font-family:"Baloo 2",system-ui,sans-serif;
-    font-weight:700;
-    font-size:.86em;
-    color:rgba(255,243,226,.9);
-  }
 
   :focus-visible{outline:2px solid var(--gold); outline-offset:3px; border-radius:4px}
 
@@ -320,18 +297,12 @@
   <section class="crew">
     <p class="crew-label">Contributors</p>
     <ul>
-      <li>
-        <span class="ava"><span class="mono">S</span><img src="assets/sadhin.jpg" alt="" onerror="this.style.display='none'"></span>
-        <b>Sadhin</b><span class="role">packed already. twice.</span>
-      </li>
-      <li>
-        <span class="ava"><span class="mono">M</span><img src="assets/mubin.jpeg" alt="" onerror="this.style.display='none'"></span>
-        <b>Mubin</b><span class="role">refreshes this page hourly</span>
-      </li>
-      <li>
-        <span class="ava"><span class="mono">K</span><img src="assets/khaled.jpeg" alt="" onerror="this.style.display='none'"></span>
-        <b>Khaled</b><span class="role">confirmed. unconfirmed. confirmed.</span>
-      </li>
+      <li><b>Sadhin</b><span class="role">packed already. twice.</span></li>
+      <li><b>Mubin</b><span class="role">refreshes this page hourly</span></li>
+      <li><b>Khaled</b><span class="role">confirmed. unconfirmed. confirmed.</span></li>
+      <li><b>Ashif</b><span class="role">made the spreadsheet. never opened it again.</span></li>
+      <li><b>Bijoy</b><span class="role">learning Thai. knows one word.</span></li>
+      <li><b>Roman</b><span class="role">asked if he can bring his cousin</span></li>
     </ul>
   </section>
 </main>

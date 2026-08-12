@@ -21,13 +21,11 @@ compressed copy the page actually loads (2.3 MB -> 269 KB); regenerate it after 
 the source. Framing is controlled by `background-position` on `.photo` — `center 58%`
 keeps the stack of textbooks in frame along the bottom edge.
 
-## Contributor photos
+## Contributors
 
-`assets/sadhin.jpg`, `assets/mubin.jpeg`, `assets/khaled.jpeg`.
-
-Shown unscaled — each fills its circle via `object-fit: cover`, with a gold monogram
-underneath as the fallback if a file is missing. Square sources show in full; a portrait
-source is trimmed top and bottom to fit the circle.
+Name plus one line each, in the `.crew` list near the bottom of `index.html`. No photos —
+the list is text only. `.crew ul` is capped at 1020px so the pills wrap into even rows
+rather than leaving one stranded on its own line.
 
 ## Credits
 

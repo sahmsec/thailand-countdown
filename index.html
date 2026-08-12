@@ -319,7 +319,7 @@
   .crew .role{color:rgba(255,243,226,.8); font-style:italic}
 
   /* the people footing the bill get top billing */
-  .sponsors li{
+  .crew li.is-sponsor{
     border-color:rgba(63,224,192,.5);
     background:rgba(63,224,192,.14);
   }
@@ -349,17 +349,43 @@
       background-image:url("assets/bg-mobile.jpg");
       background-position:center center;
     }
+    /* lighter through the lower half so the sleepers actually show */
+    .scrim{
+      background:
+        radial-gradient(70% 26% at 50% 16%, rgba(4,12,22,.5), rgba(4,12,22,0) 80%),
+        linear-gradient(180deg,
+          rgba(5,16,28,.74) 0%,
+          rgba(6,18,30,.58) 30%,
+          rgba(6,18,30,.24) 52%,
+          rgba(5,14,24,.14) 72%,
+          rgba(3,10,18,.4) 100%);
+    }
 
-    main{padding:4vh 14px 5vh; gap:clamp(9px,1.7vh,18px)}
+    /* The picture is the joke. Title sits up in the sky, clock takes the
+       middle, sponsors close it out — three bands with the scene between
+       them, rather than one slab of type over everybody's face. */
+    main{
+      justify-content:flex-start;
+      padding:2.8vh 10px 2.6vh;
+      gap:0;
+    }
+    .stamp{font-size:.56rem; padding:.4em .82em .34em; letter-spacing:.24em; text-indent:.24em}
+    .promise{font-size:clamp(1.05rem,6.2vw,1.5rem)}
+    h1{font-size:clamp(2.4rem,12vw,3.3rem); margin-top:4px}
 
-    /* even 2x2 rather than a stranded full-width row */
-    .timer{width:100%; gap:8px}
-    .cell,.cell--lead{min-width:0; flex:1 1 calc(50% - 4px)}
-    .num{font-size:clamp(2rem,10vw,2.7rem)}
+    /* one compact row, and the auto margins float it to the middle */
+    .timer{width:100%; gap:5px; flex-wrap:nowrap; margin-top:auto}
+    .cell,.cell--lead{min-width:0; flex:1 1 0; padding:9px 3px 8px; border-radius:13px}
+    .num{font-size:clamp(1.05rem,5.6vw,1.55rem)}
+    .lbl{font-size:.45rem; letter-spacing:.1em; text-indent:.1em; margin-top:.5em}
+    .foot{font-size:.55rem; letter-spacing:.22em; text-indent:.22em; margin-top:7px; margin-bottom:auto}
 
-    .crew{gap:7px}
-    .crew ul{max-width:100%; gap:6px}
-    .crew li{font-size:.71rem; padding:.4em .8em .46em; gap:.45em}
+    /* contributors are desktop-only — the phone keeps just the two sponsors */
+    .crew{margin-top:0; gap:5px}
+    .crew > ul:not(.sponsors){display:none}
+    .crew-label{font-size:.5rem; letter-spacing:.24em; text-indent:.24em}
+    .crew ul{max-width:100%; gap:5px}
+    .crew li{font-size:.62rem; padding:.32em .66em .36em; gap:.38em}
 
     /* the sleepers sit low and left in the portrait crop */
     .zzz--a{left:9%;  top:70.5%; --zs:.82}
@@ -401,8 +427,8 @@
   <section class="crew">
     <p class="crew-label">Sponsored by</p>
     <ul class="sponsors">
-      <li><b>Nira apu</b><span class="role">paying for this. regrets it already.</span></li>
-      <li><b>Fahim bhaiya</b><span class="role">brought a stick. purely for coconuts.</span></li>
+      <li class="is-sponsor"><b>Nira apu</b><span class="role">paying for this. regrets it already.</span></li>
+      <li class="is-sponsor"><b>Fahim bhaiya</b><span class="role">brought a stick. purely for coconuts.</span></li>
     </ul>
     <ul>
       <li><b>Sadhin</b><span class="role">packed already. twice.</span></li>

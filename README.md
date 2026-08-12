@@ -16,21 +16,29 @@ npx serve .
 
 ## Background
 
-Two crops of the same scene, chosen by media query at 560px:
+Two crops of the same illustration, chosen by media query at 560px:
 
-| Screen | Loads | Source |
+| Screen | Serves | Source art |
 |---|---|---|
-| Wide | `background.jpg` (269 KB) | `background.png` |
-| Narrow | `background-phone.jpg` (274 KB) | `background-phone.png` |
+| Wide | `bg-desktop.jpg` (431 KB) | `bg-desktop.png` |
+| Narrow | `bg-mobile.jpg` (409 KB) | `bg-mobile.png` |
 
-The `.png` files are the AI-generated originals; the `.jpg` files are what the page
-actually serves, and each `<link rel="preload">` carries a matching `media` attribute so a
-phone never downloads the wide one.
+`og.jpg` is cropped from `bg-desktop.png` to the 1.91:1 that Facebook and WhatsApp
+expect, weighted to keep the standing pair's heads rather than centring the trim.
+Re-encode all three whenever the source art changes.
 
-A portrait crop exists because scaling the wide image to fill a phone screen crops it on
-the horizontal axis only — `background-position`'s Y value is inert there, so no amount of
-tuning could bring the whole group into frame.
+A separate portrait crop exists because scaling the wide art to fill a phone screen
+crops it on the horizontal axis only — `background-position`'s Y value is inert there,
+so no amount of tuning brings the whole group into frame.
 
+## Motion
+
+- **Flocks of birds** cross the sky — three groups, each a loose V with jitter, drifting
+  at different speeds. Silhouettes are near-black with a warm `drop-shadow` halo so they
+  stay visible over both the bright sunset and the dark treeline.
+- **Stars orbit the sleepers.** `.zzz--a` / `.zzz--b` are absolutely positioned over the
+  two passed-out figures, and the coordinates differ per breakpoint because the two crops
+  frame them differently. Reposition both if the art changes.
 ## Contributors
 
 Name plus one line each, in the `.crew` list near the bottom of `index.html`. No photos —

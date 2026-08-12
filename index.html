@@ -23,8 +23,8 @@
 <meta name="twitter:description" content="Six of us, one beach, and zero actual studying. The countdown is running.">
 <meta name="twitter:image" content="https://thailand-countdown-gules.vercel.app/assets/og.jpg">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌴</text></svg>">
-<link rel="preload" as="image" href="assets/background.jpg" media="(min-width:561px)">
-<link rel="preload" as="image" href="assets/background-phone.jpg" media="(max-width:560px)">
+<link rel="preload" as="image" href="assets/bg-desktop.jpg" media="(min-width:561px)">
+<link rel="preload" as="image" href="assets/bg-mobile.jpg" media="(max-width:560px)">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Barlow+Semi+Condensed:wght@400;500;600&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
@@ -52,7 +52,7 @@
   /* ---------- the photograph ---------- */
   .photo{
     position:fixed; inset:0;
-    background:url("assets/background.jpg") center 58% / cover no-repeat, var(--ink);
+    background:url("assets/bg-desktop.jpg") center 42% / cover no-repeat, var(--ink);
     filter:saturate(1.1) contrast(1.02) brightness(.7);
     transform:scale(1.02); /* hides filter edge bleed */
   }
@@ -60,34 +60,79 @@
   .scrim{
     position:fixed; inset:0;
     background:
+      /* pool of shade under the type, so it reads against a busy illustration */
+      radial-gradient(58% 50% at 50% 44%, rgba(4,12,22,.46), rgba(4,12,22,0) 78%),
       linear-gradient(180deg,
-        rgba(6,18,30,.78) 0%,
-        rgba(7,20,32,.4) 22%,
-        rgba(7,20,32,.3) 44%,
-        rgba(6,16,26,.46) 70%,
-        rgba(3,10,18,.86) 100%);
+        rgba(6,18,30,.5) 0%,
+        rgba(7,20,32,.34) 24%,
+        rgba(7,20,32,.26) 46%,
+        rgba(6,16,26,.42) 70%,
+        rgba(3,10,18,.84) 100%);
   }
 
-  /* ---------- sky lanterns: the signature ---------- */
-  .lanterns{position:fixed; inset:0; pointer-events:none; overflow:hidden}
-  .lantern{
+  /* ---------- birds ---------- */
+  .birds{
+    position:fixed; top:0; left:0; right:0; height:46%;
+    pointer-events:none; overflow:hidden;
+    /* warm halo so a dark silhouette still reads where it crosses the treeline */
+    filter:drop-shadow(0 0 2.5px rgba(255,242,214,.75));
+  }
+  .flock{
     position:absolute;
-    bottom:34vh;
-    left:var(--x);
-    width:calc(11px * var(--s));
-    height:calc(16px * var(--s));
-    border-radius:46% 46% 40% 40% / 58% 58% 42% 42%;
-    background:linear-gradient(to bottom,#FFE9BC,#FFB870 55%,#F4783E);
-    box-shadow:0 0 calc(13px * var(--s)) calc(4px * var(--s)) rgba(255,171,92,.34);
-    opacity:0;
-    animation:rise var(--d) linear var(--delay) infinite;
+    top:var(--fy); left:0;
+    width:0; height:0;
+    animation:fly var(--fd) linear var(--fdel) infinite;
   }
-  @keyframes rise{
-    0%   {transform:translate(0,0) rotate(-2deg); opacity:0}
-    14%  {opacity:.85}
-    66%  {opacity:.6}
-    100% {transform:translate(var(--drift),-96vh) rotate(3deg); opacity:0}
+  .bird{
+    position:absolute;
+    left:var(--ox); top:var(--oy);
+    width:calc(26px * var(--bs)); height:calc(11px * var(--bs));
   }
+  /* two humps read as a distant bird at this size */
+  .bird::before,.bird::after{
+    content:"";
+    position:absolute; top:0;
+    width:calc(13px * var(--bs)); height:calc(11px * var(--bs));
+    border-top:calc(2.6px * var(--bs)) solid rgba(14,11,15,.95);
+    border-radius:50% 50% 0 0 / 100% 100% 0 0;
+    transform-origin:50% 0;
+    animation:flap calc(.95s / var(--bs)) ease-in-out var(--fp,0s) infinite;
+  }
+  .bird::before{left:0}
+  .bird::after{right:0; animation-delay:calc(var(--fp,0s) - .06s)}
+  @keyframes flap{
+    0%,100%{transform:scaleY(1)}
+    50%    {transform:scaleY(.32)}
+  }
+  @keyframes fly{
+    from{transform:translateX(-22vw)}
+    to  {transform:translateX(122vw)}
+  }
+
+  /* ---------- stars over the ones who gave up ---------- */
+  .dozing{position:fixed; inset:0; pointer-events:none}
+  .zzz{
+    position:absolute;
+    width:0; height:0;
+    transform:scaleY(.42); /* squashes the orbit into a cartoon ellipse */
+  }
+  .ring{
+    position:absolute; inset:0;
+    animation:orbit 2.7s linear infinite;
+  }
+  .ring i{
+    position:absolute; left:0; top:0;
+    font-style:normal; line-height:1;
+    font-size:calc(15px * var(--zs,1));
+    color:#FFD98A;
+    text-shadow:0 0 10px rgba(255,196,92,.9);
+    /* counter-squash so the glyph itself stays round */
+    transform:rotate(var(--a)) translateX(calc(23px * var(--zs,1))) rotate(calc(-1 * var(--a))) scaleY(2.38);
+  }
+  @keyframes orbit{ to{transform:rotate(360deg)} }
+
+  .zzz--a{left:80%;   top:50%}
+  .zzz--b{left:88.5%; top:65%}
 
   /* ---------- content ---------- */
   main{
@@ -284,7 +329,7 @@
     /* portrait-framed cut of the same scene, so a phone gets the whole
        composition instead of a narrow vertical slice of the wide one */
     .photo{
-      background-image:url("assets/background-phone.jpg");
+      background-image:url("assets/bg-mobile.jpg");
       background-position:center center;
     }
 
@@ -298,12 +343,17 @@
     .crew{gap:7px}
     .crew ul{max-width:100%; gap:6px}
     .crew li{font-size:.71rem; padding:.4em .8em .46em; gap:.45em}
+
+    /* the sleepers sit low and left in the portrait crop */
+    .zzz--a{left:9%;  top:70.5%; --zs:.82}
+    .zzz--b{left:68%; top:83%;   --zs:.82}
   }
 
   @media (prefers-reduced-motion:reduce){
-    .lantern{animation:none; opacity:.75}
     .cell{animation:none; opacity:1}
     .cell.tick .num{animation:none}
+    .flock,.bird::before,.bird::after,.ring{animation:none}
+    .birds{display:none}
   }
 </style>
 </head>
@@ -311,7 +361,11 @@
 
 <div class="photo" role="img" aria-label="Four friends sitting cross-legged on a Thai beach with open textbooks, a stack of books and a calculator in the sand, one of them asleep with a book over his face."></div>
 <div class="scrim" aria-hidden="true"></div>
-<div class="lanterns" id="lanterns" aria-hidden="true"></div>
+<div class="birds" id="birds" aria-hidden="true"></div>
+<div class="dozing" aria-hidden="true">
+  <span class="zzz zzz--a"><span class="ring"><i style="--a:0deg">★</i><i style="--a:120deg">★</i><i style="--a:240deg">★</i></span></span>
+  <span class="zzz zzz--b"><span class="ring"><i style="--a:60deg">★</i><i style="--a:180deg">★</i><i style="--a:300deg">★</i></span></span>
+</div>
 
 <main>
   <p class="eyebrow"><span class="stamp">Study tour</span><em class="promise">(I promise 🤞)</em></p>
@@ -347,19 +401,38 @@
 
   var TARGET = new Date("2027-04-09T00:00:00+07:00").getTime();
 
-  // --- sky lanterns ---
-  var lanterns = document.getElementById("lanterns"), lfrag = document.createDocumentFragment();
-  for (var j = 0; j < 9; j++){
-    var l = document.createElement("span");
-    l.className = "lantern";
-    l.style.setProperty("--x", (4 + Math.random() * 92).toFixed(2) + "%");
-    l.style.setProperty("--s", (0.45 + Math.random() * 0.6).toFixed(2));
-    l.style.setProperty("--d", (34 + Math.random() * 34).toFixed(1) + "s");
-    l.style.setProperty("--delay", "-" + (Math.random() * 60).toFixed(1) + "s");
-    l.style.setProperty("--drift", (Math.random() * 90 - 30).toFixed(0) + "px");
-    lfrag.appendChild(l);
+  // --- flocks of birds ---
+  // each flock is a loose V: birds alternate sides and fall further back per
+  // rank, with jitter so it reads as a skein rather than a stencil.
+  var birds = document.getElementById("birds"), bfrag = document.createDocumentFragment();
+  var FLOCKS = [
+    {y: 8,  n: 14, s: 1.25, d: 44},
+    {y: 25, n: 11, s: 0.95, d: 58},
+    {y: 43, n: 9,  s: 0.72, d: 72}
+  ];
+
+  for (var f = 0; f < FLOCKS.length; f++){
+    var spec = FLOCKS[f];
+    var flock = document.createElement("span");
+    flock.className = "flock";
+    flock.style.setProperty("--fy", spec.y + "%");
+    flock.style.setProperty("--fd", spec.d + "s");
+    flock.style.setProperty("--fdel", "-" + (f * 17 + Math.random() * 12).toFixed(1) + "s");
+
+    for (var i = 0; i < spec.n; i++){
+      var rank = Math.floor(i / 2);
+      var side = (i % 2) ? 1 : -1;
+      var bird = document.createElement("span");
+      bird.className = "bird";
+      bird.style.setProperty("--ox", Math.round(-rank * 27 + (Math.random() * 16 - 8)) + "px");
+      bird.style.setProperty("--oy", Math.round(side * rank * 14 + (Math.random() * 12 - 6)) + "px");
+      bird.style.setProperty("--bs", (spec.s * (0.8 + Math.random() * 0.4)).toFixed(2));
+      bird.style.setProperty("--fp", "-" + (Math.random() * 1.2).toFixed(2) + "s");
+      flock.appendChild(bird);
+    }
+    bfrag.appendChild(flock);
   }
-  lanterns.appendChild(lfrag);
+  birds.appendChild(bfrag);
 
   // --- countdown ---
   var el = {

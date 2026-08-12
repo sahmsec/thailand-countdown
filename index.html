@@ -13,8 +13,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Barlow+Semi+Condensed:wght@400;500;600&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --gold:#F0C784;
-    --lotus:#F6A5B6;
+    --accent:#3FE0C0;
+    --lotus:#FF9DB6;
     --jasmine:#FFF3E2;
     --ink:#0B1730;
   }
@@ -91,16 +91,16 @@
   /* the official half */
   .stamp{
     padding:.5em 1.15em .44em;
-    border:1.5px solid rgba(240,199,132,.6);
+    border:1.5px solid rgba(63,224,192,.6);
     border-radius:999px;
-    background:rgba(240,199,132,.12);
+    background:rgba(63,224,192,.12);
     backdrop-filter:blur(9px);
     -webkit-backdrop-filter:blur(9px);
     font-weight:600;
     letter-spacing:.34em;
     text-indent:.34em;
     text-transform:uppercase;
-    color:var(--gold);
+    color:var(--accent);
     text-shadow:0 2px 12px rgba(6,14,30,.8);
   }
   /* ...and the half somebody scribbled on afterwards */
@@ -123,7 +123,7 @@
     font-size:clamp(3.4rem,14vw,8rem);
     line-height:.92;
     letter-spacing:-.015em;
-    background:linear-gradient(168deg,#FFF6E7 8%,var(--gold) 52%,var(--lotus) 96%);
+    background:linear-gradient(166deg,#FFFDF4 4%,#8FF4DF 42%,#2FD5B6 98%);
     -webkit-background-clip:text;
     background-clip:text;
     color:transparent;
@@ -141,7 +141,7 @@
     min-width:clamp(72px,15.5vw,122px);
     padding:clamp(12px,2vh,20px) clamp(9px,1.6vw,15px) clamp(9px,1.4vh,14px);
     border-radius:20px;
-    border:1px solid rgba(240,199,132,.32);
+    border:1px solid rgba(63,224,192,.32);
     background:linear-gradient(to bottom, rgba(255,246,233,.17), rgba(255,246,233,.05));
     backdrop-filter:blur(13px) saturate(1.2);
     -webkit-backdrop-filter:blur(13px) saturate(1.2);
@@ -181,7 +181,7 @@
     letter-spacing:.26em;
     text-transform:uppercase;
     text-indent:.26em;
-    color:rgba(240,199,132,.9);
+    color:rgba(63,224,192,.9);
   }
 
   .cell.tick .num{animation:pulse .5s ease-out}
@@ -198,7 +198,7 @@
     letter-spacing:.34em;
     text-transform:uppercase;
     text-indent:.34em;
-    color:rgba(246,214,158,.95);
+    color:rgba(146,242,222,.96);
     text-shadow:0 1px 3px rgba(6,14,30,.95), 0 2px 16px rgba(6,14,30,.9);
   }
 
@@ -215,7 +215,7 @@
     letter-spacing:.32em;
     text-transform:uppercase;
     text-indent:.32em;
-    color:rgba(240,199,132,.72);
+    color:rgba(63,224,192,.72);
     text-shadow:0 2px 12px rgba(6,14,30,.85);
   }
   .crew ul{
@@ -228,7 +228,7 @@
     display:flex; align-items:baseline; gap:.55em;
     padding:.46em .95em .52em;
     border-radius:999px;
-    border:1px solid rgba(240,199,132,.28);
+    border:1px solid rgba(63,224,192,.28);
     background:rgba(255,246,233,.1);
     backdrop-filter:blur(10px);
     -webkit-backdrop-filter:blur(10px);
@@ -239,11 +239,11 @@
     font-weight:600;
     letter-spacing:.13em;
     text-transform:uppercase;
-    color:var(--gold);
+    color:var(--accent);
   }
   .crew .role{color:rgba(255,243,226,.8); font-style:italic}
 
-  :focus-visible{outline:2px solid var(--gold); outline-offset:3px; border-radius:4px}
+  :focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:4px}
 
   .arrived .timer,.arrived .foot{display:none}
   .arrived-note{display:none}
@@ -252,7 +252,7 @@
     margin:0;
     font-family:"Baloo 2",system-ui,sans-serif;
     font-size:clamp(1.4rem,5vw,2.2rem);
-    color:var(--gold);
+    color:var(--accent);
   }
 
   .sr{

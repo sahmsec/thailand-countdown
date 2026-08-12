@@ -373,19 +373,19 @@
     .promise{font-size:clamp(1.05rem,6.2vw,1.5rem)}
     h1{font-size:clamp(2.4rem,12vw,3.3rem); margin-top:4px}
 
-    /* one compact row, and the auto margins float it to the middle */
-    .timer{width:100%; gap:5px; flex-wrap:nowrap; margin-top:auto}
-    .cell,.cell--lead{min-width:0; flex:1 1 0; padding:9px 3px 8px; border-radius:13px}
-    .num{font-size:clamp(1.05rem,5.6vw,1.55rem)}
-    .lbl{font-size:.45rem; letter-spacing:.1em; text-indent:.1em; margin-top:.5em}
+    /* two rows of two, floated to the middle by the auto margins */
+    .timer{width:100%; gap:5px; margin-top:auto}
+    .cell,.cell--lead{min-width:0; flex:1 1 calc(50% - 3px); padding:9px 4px 8px; border-radius:14px}
+    .num{font-size:clamp(1.5rem,7.4vw,2.1rem)}
+    .lbl{font-size:.46rem; letter-spacing:.12em; text-indent:.12em; margin-top:.5em}
     .foot{font-size:.55rem; letter-spacing:.22em; text-indent:.22em; margin-top:7px; margin-bottom:auto}
 
-    /* contributors are desktop-only — the phone keeps just the two sponsors */
-    .crew{margin-top:0; gap:5px}
-    .crew > ul:not(.sponsors){display:none}
-    .crew-label{font-size:.5rem; letter-spacing:.24em; text-indent:.24em}
-    .crew ul{max-width:100%; gap:5px}
-    .crew li{font-size:.62rem; padding:.32em .66em .36em; gap:.38em}
+    /* everybody fits, so everybody is listed — just tightly */
+    .crew{margin-top:0; gap:4px}
+    .crew-label{font-size:.48rem; letter-spacing:.24em; text-indent:.24em}
+    .crew ul{max-width:100%; gap:4px}
+    .crew li{font-size:.55rem; padding:.28em .58em .32em; gap:.32em}
+    .crew b{letter-spacing:.09em}
 
     /* the sleepers sit low and left in the portrait crop */
     .zzz--a{left:9%;  top:70.5%; --zs:.82}

@@ -16,10 +16,20 @@ npx serve .
 
 ## Background
 
-`assets/background.png` is the AI-generated original. `assets/background.jpg` is the
-compressed copy the page actually loads (2.3 MB -> 269 KB); regenerate it after replacing
-the source. Framing is controlled by `background-position` on `.photo` — `center 58%`
-keeps the stack of textbooks in frame along the bottom edge.
+Two crops of the same scene, chosen by media query at 560px:
+
+| Screen | Loads | Source |
+|---|---|---|
+| Wide | `background.jpg` (269 KB) | `background.png` |
+| Narrow | `background-phone.jpg` (274 KB) | `background-phone.png` |
+
+The `.png` files are the AI-generated originals; the `.jpg` files are what the page
+actually serves, and each `<link rel="preload">` carries a matching `media` attribute so a
+phone never downloads the wide one.
+
+A portrait crop exists because scaling the wide image to fill a phone screen crops it on
+the horizontal axis only — `background-position`'s Y value is inert there, so no amount of
+tuning could bring the whole group into frame.
 
 ## Contributors
 

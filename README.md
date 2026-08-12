@@ -39,12 +39,9 @@ so no amount of tuning brings the whole group into frame.
 - **Stars orbit the sleepers.** `.zzz--a` / `.zzz--b` are absolutely positioned over the
   two passed-out figures, and the coordinates differ per breakpoint because the two crops
   frame them differently. Reposition both if the art changes.
-## Contributors
+## Sponsors and contributors
 
-Name plus one line each, in the `.crew` list near the bottom of `index.html`. No photos —
-the list is text only. `.crew ul` is capped at 1020px so the pills wrap into even rows
-rather than leaving one stranded on its own line.
-
-## Credits
-
-Typefaces: Baloo 2, Barlow Semi Condensed, and Caveat, served from Google Fonts.
+Both lists live in the `.crew` section near the bottom of `index.html`: name plus one
+line, no photos. Only the sponsors carry a label ("Sponsored by") — the contributors run
+unlabelled beneath them. `.crew ul` is capped at 1020px so the pills wrap into even rows
+rather than leaving one stranded.

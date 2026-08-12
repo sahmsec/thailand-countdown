@@ -52,7 +52,9 @@
   /* ---------- the photograph ---------- */
   .photo{
     position:fixed; inset:0;
-    background:url("assets/bg-desktop.jpg") center 42% / cover no-repeat, var(--ink);
+    /* anchored near the top: on a short, wide window the vertical overflow is
+       large, and cropping it from the middle beheaded the standing pair */
+    background:url("assets/bg-desktop.jpg") center 10% / cover no-repeat, var(--ink);
     filter:saturate(1.1) contrast(1.02) brightness(.7);
     transform:scale(1.02); /* hides filter edge bleed */
   }
@@ -76,6 +78,15 @@
     pointer-events:none; overflow:hidden;
     /* warm halo so a dark silhouette still reads where it crosses the treeline */
     filter:drop-shadow(0 0 2.5px rgba(255,242,214,.75));
+    /* The art is one flat image, so birds cannot truly sit behind the people.
+       Masking the layer where the figures stand reads the same: they vanish
+       into the scene instead of sliding across somebody's face. */
+    --sky:linear-gradient(to bottom, #000 0 40%, rgba(0,0,0,0) 62%);
+    --gap:radial-gradient(ellipse 27% 80% at 52% 36%, rgba(0,0,0,0) 0 48%, #000 90%);
+    -webkit-mask-image:var(--sky), var(--gap);
+    mask-image:var(--sky), var(--gap);
+    -webkit-mask-composite:source-in;
+    mask-composite:intersect;
   }
   .flock{
     position:absolute;
@@ -307,6 +318,12 @@
   }
   .crew .role{color:rgba(255,243,226,.8); font-style:italic}
 
+  /* the people footing the bill get top billing */
+  .sponsors li{
+    border-color:rgba(63,224,192,.5);
+    background:rgba(63,224,192,.14);
+  }
+
   :focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:4px}
 
   .arrived .timer,.arrived .foot{display:none}
@@ -382,7 +399,11 @@
   <p class="sr" id="sr" aria-live="polite"></p>
 
   <section class="crew">
-    <p class="crew-label">Contributors</p>
+    <p class="crew-label">Sponsored by</p>
+    <ul class="sponsors">
+      <li><b>Nira apu</b><span class="role">paying for this. regrets it already.</span></li>
+      <li><b>Fahim bhaiya</b><span class="role">brought a stick. purely for coconuts.</span></li>
+    </ul>
     <ul>
       <li><b>Sadhin</b><span class="role">packed already. twice.</span></li>
       <li><b>Mubin</b><span class="role">refreshes this page hourly</span></li>

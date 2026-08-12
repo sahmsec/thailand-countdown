@@ -257,7 +257,9 @@
     position:absolute; inset:0; z-index:1;
     width:100%; height:100%;
     object-fit:cover;
-    transform:scale(var(--z,1));
+    /* --oy is where the face sits after cover-cropping; scale about it, then
+       shift that same point to the middle of the circle. */
+    transform:translateY(calc(50% - var(--oy,30%))) scale(var(--z,1));
     transform-origin:50% var(--oy,30%);
   }
   .mono{
@@ -337,15 +339,15 @@
     <p class="crew-label">Contributors</p>
     <ul>
       <li>
-        <span class="ava"><span class="mono">S</span><img src="assets/sadhin.jpg" alt="" style="--z:1.5;--oy:33%" onerror="this.style.display='none'"></span>
+        <span class="ava"><span class="mono">S</span><img src="assets/sadhin.jpg" alt="" style="--z:1.5;--oy:34%" onerror="this.style.display='none'"></span>
         <b>Sadhin</b><span class="role">packed already. twice.</span>
       </li>
       <li>
-        <span class="ava"><span class="mono">M</span><img src="assets/mubin.jpeg" alt="" style="--z:4.3;--oy:26%" onerror="this.style.display='none'"></span>
+        <span class="ava"><span class="mono">M</span><img src="assets/mubin.jpeg" alt="" style="--z:2.7;--oy:30%" onerror="this.style.display='none'"></span>
         <b>Mubin</b><span class="role">refreshes this page hourly</span>
       </li>
       <li>
-        <span class="ava"><span class="mono">K</span><img src="assets/khaled.jpeg" alt="" style="--z:2.6;--oy:28%" onerror="this.style.display='none'"></span>
+        <span class="ava"><span class="mono">K</span><img src="assets/khaled.jpeg" alt="" style="--z:2.5;--oy:29%" onerror="this.style.display='none'"></span>
         <b>Khaled</b><span class="role">confirmed. unconfirmed. confirmed.</span>
       </li>
     </ul>
